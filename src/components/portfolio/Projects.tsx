@@ -76,6 +76,20 @@ const projects: Project[] = [
         links: [{ label: "LinkedIn Post", href: "https://www.linkedin.com/feed/update/urn:li:activity:7424521708004556800/" }],
         metric: { value: "2nd", label: "of the cohort" },
     },
+    {
+        title: "The Sadness Paradox - Music & Emotion Visualization",
+        context: "CSCI 5609 · University of Minnesota",
+        period: "Fall 2025",
+        problem:
+            "Why do people deliberately seek out sad music when they're already feeling down? The emotional relationship between listeners and melancholy tracks is counterintuitive and poorly understood.",
+        approach:
+            "Built an interactive visualization using React and D3.js over 100 years of Spotify audio feature data (1921–2020). Integrated the Spotify Web API to let users explore how valence, tempo, and energy cluster around \"sad\" tracks, and surface the paradox through dynamic charts.",
+        results:
+            "Produced a compelling, browser-based narrative that makes the sadness paradox tangible. Users can trace the emotional arc of music across decades and see why low-valence songs still top playlists.",
+        tags: ["React", "D3.js", "Python", "Pandas", "Spotify API"],
+        links: [{ label: "Live Demo", href: "https://shivank19.github.io/CSCI5609_Final_Project/" }],
+        metric: { value: "100 yrs", label: "of music data" },
+    },
 ];
 
 export function Projects() {
