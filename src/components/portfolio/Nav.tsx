@@ -1,9 +1,9 @@
 const links = [
-    { href: "#work", label: "Work" },
-    { href: "#education", label: "Education" },
-    { href: "#hackathons", label: "Hackathons" },
     { href: "#about", label: "About" },
+    { href: "#education", label: "Education" },
+    { href: "#work", label: "Work" },
     { href: "#experience", label: "Experience" },
+    { href: "#hackathons", label: "Hackathons" },
     { href: "#contact", label: "Contact" },
 ];
 
