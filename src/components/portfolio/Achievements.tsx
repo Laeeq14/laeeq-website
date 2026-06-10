@@ -62,7 +62,7 @@ export function Achievements() {
 
                 <div className="mt-12 space-y-8">
                     {hackathons.map((h, idx) => (
-                        <Reveal key={h.title} delay={idx * 80}>
+                        <Reveal key={h.title} delay={idx * 100} variant="fade">
                             <article className="overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-clay/40 hover:shadow-[0_25px_50px_-30px_color-mix(in_oklab,var(--clay)_45%,transparent)]">
                                 <div className="grid gap-0 md:grid-cols-2">
                                     <div className="grid grid-cols-2 gap-1 bg-secondary p-1">
@@ -96,7 +96,7 @@ export function Achievements() {
                     ))}
                     <div className="grid gap-4 pt-2 md:grid-cols-2">
                         {honors.map((i, idx) => (
-                            <Reveal key={i.title} delay={idx * 80}>
+                            <Reveal key={i.title} delay={idx * 100} variant="fade">
                                 <div className="h-full rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-clay/40">
                                     <div className="flex items-baseline justify-between gap-4">
                                         <span className="font-serif text-lg text-clay">{i.place}</span>

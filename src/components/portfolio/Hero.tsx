@@ -46,7 +46,7 @@ export function Hero() {
                         </a>
                     </div>
                 </Reveal>
-                <Reveal className="relative" delay={150}>
+                <Reveal className="relative" delay={150} variant="fade">
                     <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
                         <div className="absolute -right-4 -top-4 h-full w-full rounded-2xl border border-clay/40 transition-transform duration-500 hover:translate-x-1 hover:translate-y-1" />
                         <div className="group absolute inset-0 overflow-hidden rounded-2xl bg-secondary shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--clay)_40%,transparent)]">

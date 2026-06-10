@@ -50,7 +50,7 @@ export function Skills() {
 
                 <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     {groups.map((g, idx) => (
-                        <Reveal key={g.title} delay={idx * 70}>
+                        <Reveal key={g.title} delay={idx * 80} variant="fade">
                             <p className="mb-4 text-xs uppercase tracking-widest text-clay">
                                 {g.title}
                             </p>
@@ -66,7 +66,7 @@ export function Skills() {
                     ))}
                 </div>
 
-                <Reveal className="mt-16 rounded-2xl border border-border bg-card p-8">
+                <Reveal className="mt-16 rounded-2xl border border-border bg-card p-8" variant="fade" delay={100}>
                     <p className="mb-4 text-xs uppercase tracking-widest text-clay">
                         Certifications
                     </p>

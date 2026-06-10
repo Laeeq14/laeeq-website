@@ -7,8 +7,9 @@ const experience = [
         where: "Remote",
         period: "Mar – Jul 2025",
         notes: [
-            "Profiled APT and eCrime groups (SideWinder, Patchwork, Confucius); wrote detection rules in YARA, Sigma, and KQL.",
-            "Led a collaborative APT41 dossier with STIX-structured data and an ATT&CK Navigator heatmap used by downstream security teams.",],
+            "Analyzed behavioral patterns of advanced threat groups to build structured intelligence dossiers, mapping complex attack cycles to visualization tools like MITRE ATT&CK heatmaps.",
+            "Engineered detection queries (KQL, Sigma, YARA) to parse telemetry and convert raw indicators into structured, queryable data feeds (STIX) to guide security planning.",
+        ],
     },
     {
         role: "Data Analyst Intern",
@@ -16,8 +17,8 @@ const experience = [
         where: "Bangalore",
         period: "Feb – May 2025",
         notes: [
-            "Analyzed placement funnels, skill gaps, and recruiter performance with Python, MySQL, and R, cleaned ER diagrams, and generated validated synthetic datasets.",
-            "Built Power BI, Streamlit, and Matplotlib dashboards so cross-functional teams could actually act on the numbers.",
+            "Analyzed placement funnels, skill gaps, and salary trends using Python, MySQL, and R, optimizing ER diagrams and generating synthetic datasets to improve revenue visibility.",
+            "Designed and deployed interactive dashboards using Streamlit and Power BI to track key performance indicators, enabling cross-functional teams to monitor program performance and make data-driven decisions.",
         ],
     },
 ];
@@ -37,7 +38,7 @@ export function Experience() {
 
                 <div className="mt-12 divide-y divide-border border-y border-border">
                     {experience.map((e, idx) => (
-                        <Reveal key={e.role + e.org} delay={idx * 80}>
+                        <Reveal key={e.role + e.org} delay={idx * 100} variant="fade">
                             <div className="grid gap-6 py-8 md:grid-cols-[200px_1fr]">
                                 <div>
                                     <p className="text-sm text-ink-soft">{e.period}</p>

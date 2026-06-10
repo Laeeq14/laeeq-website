@@ -113,7 +113,7 @@ export function Projects() {
 
                 <div className="grid gap-6 md:grid-cols-2">
                     {projects.map((p, idx) => (
-                        <Reveal key={p.title} delay={(idx % 2) * 80}>                        <article
+                        <Reveal key={p.title} delay={(idx % 3) * 100} variant="fade">                        <article
                             className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-[0_1px_0_rgba(0,0,0,0.02),0_20px_40px_-30px_color-mix(in_oklab,var(--clay)_30%,transparent)] transition-all duration-300 hover:-translate-y-1 hover:border-clay/50 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--clay)_55%,transparent)]"
                         >
                             <div className="flex items-start justify-between gap-4">

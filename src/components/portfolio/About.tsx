@@ -17,21 +17,23 @@ export function About() {
                     </h2>
 
                     <dl className="mt-8 space-y-4">
-                        {facts.map((f) => (
-                            <div
+                        {facts.map((f, idx) => (
+                            <Reveal
                                 key={f.k}
+                                variant="fade"
+                                delay={idx * 70}
                                 className="flex flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-clay/40 sm:flex-row sm:items-center sm:justify-between"
                             >
                                 <dt className="text-[11px] uppercase tracking-widest text-clay">
                                     {f.k}
                                 </dt>
                                 <dd className="text-[15px] text-ink">{f.v}</dd>
-                            </div>
+                            </Reveal>
                         ))}
                     </dl>
                 </Reveal>
 
-                <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft" delay={120}>
+                <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft" delay={120} variant="fade">
                     <p>
                         I started in computer science, fell for data along the way, and now
                         I spend most days turning messy datasets into models, dashboards,

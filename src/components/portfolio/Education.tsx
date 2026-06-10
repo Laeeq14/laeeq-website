@@ -37,7 +37,7 @@ export function Education() {
 
                 <div className="mt-12 space-y-6">
                     {items.map((it, idx) => (
-                        <Reveal key={it.school} delay={idx * 80}>
+                        <Reveal key={it.school} delay={idx * 100} variant="fade">
                             <article className="grid gap-6 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-clay/40 hover:shadow-[0_20px_40px_-25px_color-mix(in_oklab,var(--clay)_45%,transparent)] md:grid-cols-[1fr_auto] md:gap-10 md:p-8">
                                 <div>
                                     <h3 className="font-serif text-2xl text-ink">{it.school}</h3>
