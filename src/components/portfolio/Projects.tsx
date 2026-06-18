@@ -50,7 +50,7 @@ const projects: Project[] = [
         approach:
             "Built a FastAPI and Next.js multi-agent workflow employing Groq to parse and extract unstructured patient referral PDFs. Integrated a TinyFish browser agent that navigates insurance portals and nurse rosters to automate eligibility checks and patient scheduling.",
         results:
-            "Recognized as a Finalist out of a packed hackathon field within 24 hours. Demoed end-to-end referral intake on real-world patient data, executing extraction, validation, and browser-driven scheduling decisions in under a minute instead of the typical 72-hour manual backlog.",
+            "Finalist in a 24 hour packed hackathon. Demoed end-to-end referral intake on real-world patient data, executing extraction, validation, and browser-driven scheduling decisions in under a minute instead of the typical 72-hour manual backlog.",
         tags: ["LLM Agents", "FastAPI", "Next.js", "Groq API", "TinyFish AI"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/careflow-ai" }],
         metric: { value: "<1 min", label: "intake → routed" },
