@@ -17,7 +17,7 @@ export function Hero() {
                 <Reveal className="flex flex-col justify-center">
                     <p className="mb-6 flex items-center gap-3 text-sm text-ink-soft">
                         <span className="h-px w-8 bg-clay" />
-                        Minneapolis, MN · open to summer 2026 internships
+                        Minneapolis, MN · Open to Full-Time 2027 Roles (Graduating May 2027)
                     </p>
                     <h1 className="font-serif text-5xl leading-[1.05] text-ink md:text-6xl lg:text-7xl">
                         Hi, I&apos;m Laeeq,<br />

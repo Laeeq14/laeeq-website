@@ -13,6 +13,9 @@ const groups = [
             "Keras",
             "XGBoost",
             "SHAP",
+            "LangGraph",
+            "Qdrant (Vector DB)",
+            "DeepEval",
         ],
     },
     {
@@ -21,7 +24,7 @@ const groups = [
     },
     {
         title: "Cloud & Platforms",
-        items: ["AWS", "MongoDB", "Git", "Databricks", "Flask", "Django", "React"],
+        items: ["AWS", "MongoDB", "Git", "Databricks", "Flask", "Django", "React", "Elasticsearch / SIEM", "Docker Compose", "Terraform"],
     },
 ];
 

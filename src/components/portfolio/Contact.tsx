@@ -21,9 +21,7 @@ export function Contact() {
                             I&apos;d love to hear about it.
                         </h2>
                         <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
-                            I&apos;m currently looking for summer 2026 internships in data
-                            science, applied ML, and analytics, and always happy to chat
-                            about projects, research, or interesting problems.
+                            I&apos;m currently looking for Full-Time roles starting Spring/Summer 2027 in Security Data Engineering, Applied ML, and Enterprise Automation, and always happy to chat about projects, infrastructure, or interesting data problems.
                         </p>
 
                         <a
