@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 const facts = [
     { k: "Based in", v: "Minneapolis, MN" },
     { k: "Background", v: "CS undergrad, now Data Science M.S." },
-    { k: "Open to", v: "Summer 2026 internships, full-time roles" },
+    { k: "Open to", v: "Full-time roles (2027)" },
     { k: "Comfortable in", v: "Python, SQL, the cloud, the terminal" },
 ];
 
