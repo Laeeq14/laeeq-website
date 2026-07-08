@@ -14,18 +14,18 @@ type Project = {
 
 const projects: Project[] = [
     {
-        title: "Agentic-CTI - Cyber Threat Intelligence Pipeline",
-        context: "Independent Project",
-        period: "Spring 2026",
+        title: "Agentic-CTI: Autonomous Threat Hunting Pipeline",
+        context: "Enterprise Architecture Project",
+        period: "Summer 2026",
         problem:
-            "Translating unstructured threat reports into validated detection rules is slow, manual, and vulnerable to prompt injection attacks and formatting errors.",
+            "Security Operations Centers face crippling alert fatigue. Manually triaging raw network logs and translating threat intel into verified detection rules is slow and highly vulnerable to LLM hallucinations.",
         approach:
-            "Orchestrated a LangGraph state machine utilizing Groq/Llama-3.3. Implemented a regex-based pre-extraction guardrail for injection defense, a local Qdrant vector database for RAG context, and a deterministic YARA-L 2.0 syntax validator with an auto-correcting feedback loop.",
+            "Architected a containerized microservices pipeline (Docker/Terraform). Engineered a LangGraph multi-agent system that autonomously queries a local Elasticsearch SIEM, extracts indicators via Qdrant RAG, and auto-corrects Google SecOps YARA-L rules through a deterministic validator with a feedback retry loop.",
         results:
-            "Automated raw text/PDF report ingestion to output syntactically correct Google SecOps YARA-L rules. Handled adversarial overrides with zero LLM cost, resolving syntax errors locally via the retry engine. Deployed as a Streamlit dashboard and async file watcher.",
-        tags: ["LangGraph", "Qdrant RAG", "YARA-L 2.0", "FastAPI/Streamlit", "Llama 3.3"],
+            "Quantified reliability with a custom deterministic eval suite (DeepEval). Achieved a 98.8% IOC extraction F1-score across 30 real-world incident replays with a 100% adversarial prompt-injection block rate and 100% output schema conformance.",
+        tags: ["LangGraph (Llama-3.3)", "Elasticsearch", "Docker/Terraform", "FastAPI", "DeepEval"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/Agentic-CTI" }],
-        metric: { value: "<1ms", label: "injection scan pre-check" }
+        metric: { value: "98.8%", label: "IOC Extraction F1-Score" }
     },
     {
         title: "Predicting Superhost Status on Airbnb Listings",
