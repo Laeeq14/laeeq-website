@@ -28,6 +28,20 @@ const projects: Project[] = [
         metric: { value: "98.8%", label: "IOC Extraction F1-Score" }
     },
     {
+        title: "CPace-Relay: Zero-Trust PIN-Authenticated Key Exchange SDK",
+        context: "Open-Source Security SDK",
+        period: "Summer 2026",
+        problem:
+            "Wrapping DH public keys in secretbox(PBKDF2(pin)) prevents relay MITM but creates a verifiable decryption oracle — any captured transcript enables offline brute-force of all 1M PINs without touching the relay.",
+        approach:
+            "Replaced the wrapping step with a CPace PAKE handshake (IETF draft): the PIN is mixed directly into a ristretto255 DH generator via hash-to-curve, so verifying a guessed PIN offline requires solving DH — not just checking a MAC.",
+        results:
+            "20/20 tests passing across three suites: happy-path round-trips, an offline oracle resistance proof, and session isolation. Wire-level integration tests assert zero plaintext or key material ever transits the relay.",
+        tags: ["TypeScript", "CPace PAKE (ristretto255)", "WebSocket Relay", "@noble/curves", "IETF Draft"],
+        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/cpace-relay" }],
+        metric: { value: "20/20", label: "tests passing" }
+    },
+    {
         title: "Predicting Superhost Status on Airbnb Listings",
         context: "CSCI 5523 · University of Minnesota",
         period: "Fall 2025",
@@ -138,7 +152,6 @@ export function Projects() {
                             key={p.title}
                             delay={(idx % 3) * 100}
                             variant="fade"
-                            className={idx === 0 ? "md:col-span-2" : ""}
                         >
                             <article
                                 className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-[0_1px_0_rgba(0,0,0,0.02),0_20px_40px_-30px_color-mix(in_oklab,var(--clay)_30%,transparent)] transition-all duration-300 hover:-translate-y-1 hover:border-clay/50 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--clay)_55%,transparent)]"

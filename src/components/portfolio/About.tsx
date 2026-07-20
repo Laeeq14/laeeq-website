@@ -1,9 +1,9 @@
 import { Reveal } from "./Reveal";
 const facts = [
     { k: "Based in", v: "Minneapolis, MN" },
-    { k: "Background", v: "CS undergrad, now Data Science M.S." },
+    { k: "Background", v: "CS undergrad → Data Science M.S., specializing in infrastructure & threat intelligence" },
     { k: "Open to", v: "Full-time roles (2027)" },
-    { k: "Comfortable in", v: "Python, SQL, the cloud, the terminal" },
+    { k: "Comfortable in", v: "Python, TypeScript, SQL, the cloud, the terminal" },
 ];
 
 export function About() {
@@ -13,7 +13,7 @@ export function About() {
                 <Reveal>
                     <p className="mb-3 text-xs uppercase tracking-[0.2em] text-clay">About</p>
                     <h2 className="font-serif text-4xl text-ink md:text-5xl">
-                        A short version of the long story.
+                        Infrastructure. Security. Production.
                     </h2>
 
                     <dl className="mt-8 space-y-4">
@@ -35,20 +35,11 @@ export function About() {
 
                 <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft" delay={120} variant="fade">
                     <p>
-                        I started in computer science, fell for data along the way, and now
-                        I spend most days turning messy datasets into models, dashboards,
-                        and the occasional small product. My background is in software,
-                        which means I care about the parts of data science that usually
-                        get skipped, including clean pipelines, reproducible experiments,
-                        and getting something deployed rather than leaving notebooks on a
-                        laptop.
-                    </p>
-                    <p>
-                        I&apos;ve worked on everything from cyber threat intelligence,
-                        profiling APTs and writing detection rules, to building a
-                        real-time fleet tracking and billing system in production. The
-                        common thread is simple: I like problems where the math has to
-                        survive contact with real users.
+                        I bridge the gap between applied machine learning and production
+                        engineering. My focus is on designing robust backend architectures,
+                        writing deterministic evaluation suites for LLMs, and ensuring data
+                        pipelines and cryptographic protocols survive contact with real-world
+                        adversarial environments.
                     </p>
 
                     <div className="grid gap-6 pt-6 sm:grid-cols-2">
@@ -57,17 +48,19 @@ export function About() {
                                 How I work
                             </p>
                             <p className="text-base text-ink-soft">
-                                Start with the question, not the model. Get a rough version
-                                end to end first, then earn every bit of complexity.
+                                Design the threat model first, then earn every bit of
+                                complexity. Backend correctness is proven by tests, not
+                                assumed from happy-path demos.
                             </p>
                         </div>
                         <div>
                             <p className="mb-2 text-xs uppercase tracking-widest text-clay">
-                                What I&apos;m into lately
+                                Current focus
                             </p>
                             <p className="text-base text-ink-soft">
-                                Agent systems for messy real-world workflows, interpretable
-                                ML with SHAP, and dashboards that don&apos;t lie.
+                                Agentic workflows for security automation (LangGraph, FastAPI),
+                                interpretable ML, and untrusted-broker cryptographic protocols
+                                (CPace PAKE, IETF draft).
                             </p>
                         </div>
                     </div>
