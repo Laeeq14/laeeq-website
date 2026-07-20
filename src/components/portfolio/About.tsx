@@ -1,9 +1,12 @@
 import { Reveal } from "./Reveal";
+
 const facts = [
-    { k: "Based in", v: "Minneapolis, MN" },
-    { k: "Background", v: "CS undergrad → Data Science M.S., specializing in infrastructure & threat intelligence" },
-    { k: "Open to", v: "Full-time roles (2027)" },
-    { k: "Comfortable in", v: "Python, TypeScript, SQL, the cloud, the terminal" },
+    { k: "Based in",   v: "Minneapolis, MN" },
+    { k: "Background", v: "CS undergrad, then Data Science M.S. Focused on data engineering, ML systems, and security infrastructure." },
+    { k: "Open to",    v: "Full-time roles starting 2027" },
+    { k: "Languages",  v: "Python, TypeScript, SQL, Bash" },
+    { k: "Tools",      v: "Databricks, scikit-learn, Elasticsearch, PostgreSQL, Docker, FastAPI, AWS, LangGraph" },
+    { k: "Outside",    v: "Weightlifting, reading broadly, tinkering with side projects" },
 ];
 
 export function About() {
@@ -16,18 +19,18 @@ export function About() {
                         Infrastructure. Security. Production.
                     </h2>
 
-                    <dl className="mt-8 space-y-4">
+                    <dl className="mt-8 space-y-3">
                         {facts.map((f, idx) => (
                             <Reveal
                                 key={f.k}
                                 variant="fade"
                                 delay={idx * 70}
-                                className="flex flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-clay/40 sm:flex-row sm:items-center sm:justify-between"
+                                className="flex items-start gap-4 rounded-xl border border-border bg-card px-4 py-3 transition-colors hover:border-clay/40"
                             >
-                                <dt className="text-[11px] uppercase tracking-widest text-clay">
+                                <dt className="w-28 shrink-0 pt-0.5 text-[11px] uppercase tracking-widest text-clay">
                                     {f.k}
                                 </dt>
-                                <dd className="text-[15px] text-ink">{f.v}</dd>
+                                <dd className="text-[15px] leading-snug text-ink">{f.v}</dd>
                             </Reveal>
                         ))}
                     </dl>
@@ -35,22 +38,25 @@ export function About() {
 
                 <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft" delay={120} variant="fade">
                     <p>
-                        I bridge the gap between applied machine learning and production
-                        engineering. My focus is on designing robust backend architectures,
-                        writing deterministic evaluation suites for LLMs, and ensuring data
-                        pipelines and cryptographic protocols survive contact with real-world
-                        adversarial environments.
+                        I work at the intersection of data engineering, applied machine
+                        learning, and production infrastructure. That means building
+                        data pipelines and ML systems that are correct by construction,
+                        not just by assumption: evaluated models, typed data infrastructure,
+                        and cryptographic protocols that hold up under adversarial conditions.
+                        The problems I find most interesting sit at the boundary of data
+                        systems and security, where correctness is a requirement, not a
+                        hopeful assumption.
                     </p>
 
-                    <div className="grid gap-6 pt-6 sm:grid-cols-2">
+                    <div className="grid gap-6 pt-2 sm:grid-cols-2">
                         <div>
                             <p className="mb-2 text-xs uppercase tracking-widest text-clay">
                                 How I work
                             </p>
                             <p className="text-base text-ink-soft">
-                                Design the threat model first, then earn every bit of
-                                complexity. Backend correctness is proven by tests, not
-                                assumed from happy-path demos.
+                                Start with the threat model. Add complexity only when the
+                                simpler approach provably fails. Correctness is verified by
+                                tests, not assumed from happy-path runs.
                             </p>
                         </div>
                         <div>
@@ -58,14 +64,16 @@ export function About() {
                                 Current focus
                             </p>
                             <p className="text-base text-ink-soft">
-                                Agentic workflows for security automation (LangGraph, FastAPI),
-                                interpretable ML, and untrusted-broker cryptographic protocols
-                                (CPace PAKE, IETF draft).
+                                Data pipeline design and evaluation, agentic security
+                                automation with LangGraph and FastAPI, and the CPace PAKE
+                                protocol (IETF draft-irtf-cfrg-cpace) — which grew out of
+                                finding an offline oracle attack in my own earlier
+                                implementation and fixing it correctly.
                             </p>
                         </div>
                     </div>
                 </Reveal>
             </div>
-        </section >
+        </section>
     );
 }

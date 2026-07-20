@@ -20,14 +20,13 @@ export function Hero() {
                         Minneapolis, MN · Open to Full-Time 2027 Roles (Graduating May 2027)
                     </p>
                     <h1 className="font-serif text-5xl leading-[1.05] text-ink md:text-6xl lg:text-7xl">
-                        Hi, I&apos;m Laeeq. I <span className="text-clay">architect</span> multi-agent AI platforms and secure data infrastructure.
+                        Hi, I&apos;m Laeeq. I <span className="text-clay">build</span> production data systems, ML pipelines, and secure backend infrastructure.
                     </h1>
                     <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-                        M.S. Data Science student at the University of Minnesota, B.E.
-                        Computer Science. I specialize in the infrastructure side of ML
-                        and cybersecurity — building containerized deployment pipelines,
-                        zero-knowledge cryptographic protocols, and agentic workflows
-                        that scale in production.
+                        M.S. Data Science at the University of Minnesota, B.E. Computer
+                        Science. My work spans data engineering, applied ML, and security
+                        infrastructure: end-to-end pipelines, model evaluation, and
+                        PAKE-based cryptographic protocols built to hold up in production.
                     </p>
                     <div className="mt-10 flex flex-wrap items-center gap-4 text-sm">
                         <a
