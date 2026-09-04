@@ -1,14 +1,17 @@
 import pic6 from "@/assets/pic6.jpeg";
+import goldy from "@/assets/goldy.jpeg";
 import { Reveal } from "./Reveal";
 
 const items = [
     {
         school: "University of Minnesota, Twin Cities",
         sub: "College of Science and Engineering",
-        degree: "Master of Science in Data Science",
+        degree: "Master of Science in Data Science · GPA: 3.61 / 4.0 (In Progress)",
         period: "Sept 2025 – May 2027 (Expected)",
         detail:
-            "Relevant Coursework: Statistical and Machine Learning, DBMS, Data Mining, Computer Security, Data Visualization, Bayesian Analysis",
+            "Relevant Coursework: Statistical and Machine Learning, DBMS, Data Mining, Computer Security, Data Visualization, Bayesian Analysis, Cloud Computing, Parallel Computing, Non Linear Optimization",
+        photo: goldy,
+        photoAlt: "Goldy",
     },
     {
         school: "AMC Engineering College (VTU), Bangalore",

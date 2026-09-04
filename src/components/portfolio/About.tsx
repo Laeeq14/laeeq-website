@@ -1,12 +1,12 @@
-import { Reveal } from "./Reveal";
+﻿import { Reveal } from "./Reveal";
 
 const facts = [
-    { k: "Based in",   v: "Minneapolis, MN" },
-    { k: "Background", v: "CS undergrad, then Data Science M.S. Focused on data engineering, ML systems, and security infrastructure." },
-    { k: "Open to",    v: "Full-time roles starting 2027" },
-    { k: "Languages",  v: "Python, TypeScript, SQL, Bash" },
-    { k: "Tools",      v: "Databricks, scikit-learn, Elasticsearch, PostgreSQL, Docker, FastAPI, AWS, LangGraph" },
-    { k: "Outside",    v: "Weightlifting, reading broadly, tinkering with side projects" },
+    { k: "Based in", v: "Minneapolis, MN - Open to Full-Time 2027 Roles (Graduating May 2027)" },
+    { k: "Background", v: "CS undergrad -> M.S. Data Science. Building agentic AI systems, data pipelines, ML models, and security infrastructure." },
+    { k: "Open to", v: "Full-time roles starting May 2027 - AI/ML engineering, data engineering, agentic systems, applied AI" },
+    { k: "Languages", v: "Python, R, SQL (MySQL, AlloyDB), Java, C/C++, TypeScript" },
+    { k: "Tools", v: "LangGraph, FastAPI, Docker, Terraform, AWS, GCP (BigQuery, AlloyDB), Elasticsearch, scikit-learn, Pandas, Next.js, Streamlit" },
+    { k: "Outside", v: "Playing Tennis, Travelling, Reading" },
 ];
 
 export function About() {
@@ -16,7 +16,7 @@ export function About() {
                 <Reveal>
                     <p className="mb-3 text-xs uppercase tracking-[0.2em] text-clay">About</p>
                     <h2 className="font-serif text-4xl text-ink md:text-5xl">
-                        Infrastructure. Security. Production.
+                        Data. Agents. Production.
                     </h2>
 
                     <dl className="mt-8 space-y-3">
@@ -38,14 +38,13 @@ export function About() {
 
                 <Reveal className="space-y-6 text-lg leading-relaxed text-ink-soft" delay={120} variant="fade">
                     <p>
-                        I work at the intersection of data engineering, applied machine
-                        learning, and production infrastructure. That means building
-                        data pipelines and ML systems that are correct by construction,
-                        not just by assumption: evaluated models, typed data infrastructure,
-                        and cryptographic protocols that hold up under adversarial conditions.
-                        The problems I find most interesting sit at the boundary of data
-                        systems and security, where correctness is a requirement, not a
-                        hopeful assumption.
+                        I work at the intersection of agentic AI, data engineering, and
+                        production security. That means building multi-agent pipelines with
+                        real guardrails, ML systems that are evaluated rather than assumed
+                        correct, and cryptographic protocols that hold up under adversarial
+                        conditions. The problems I find most interesting sit where data
+                        systems and security overlap - where correctness is a requirement,
+                        not a hopeful assumption.
                     </p>
 
                     <div className="grid gap-6 pt-2 sm:grid-cols-2">
@@ -64,9 +63,9 @@ export function About() {
                                 Current focus
                             </p>
                             <p className="text-base text-ink-soft">
-                                Data pipeline design and evaluation, agentic security
-                                automation with LangGraph and FastAPI, and the CPace PAKE
-                                protocol (IETF draft-irtf-cfrg-cpace) — which grew out of
+                                Agentic security automation with LangGraph and FastAPI,
+                                data pipeline design and evaluation, and the CPace PAKE
+                                protocol (IETF draft-irtf-cfrg-cpace) - which grew out of
                                 finding an offline oracle attack in my own earlier
                                 implementation and fixing it correctly.
                             </p>

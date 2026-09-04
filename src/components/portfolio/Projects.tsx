@@ -1,12 +1,14 @@
 import { Reveal } from "./Reveal";
 
+type StatRibbon = { value: string; label: string };
+
 type Project = {
     title: string;
     context: string;
     period: string;
-    problem: string;
-    approach: string;
-    results: string;
+    summary: string;
+    highlights: string[];
+    statsRibbon?: StatRibbon[];
     tags: string[];
     links: { label: string; href: string }[];
     metric?: { value: string; label: string };
@@ -17,113 +19,148 @@ const projects: Project[] = [
         title: "Agentic-CTI: Autonomous Threat Hunting Pipeline",
         context: "Enterprise Architecture Project",
         period: "Summer 2026",
-        problem:
-            "Security Operations Centers face crippling alert fatigue. Manually triaging raw network logs and translating threat intel into verified detection rules is slow and highly vulnerable to LLM hallucinations.",
-        approach:
-            "Architected a containerized microservices pipeline (Docker/Terraform). Engineered a LangGraph multi-agent system that autonomously queries a local Elasticsearch SIEM, extracts indicators via Qdrant RAG, and auto-corrects Google SecOps YARA-L rules through a deterministic validator with a feedback retry loop.",
-        results:
-            "Quantified reliability with a custom deterministic eval suite (DeepEval). Achieved a 98.8% IOC extraction F1-score across 30 real-world incident replays with a 100% adversarial prompt-injection block rate and 100% output schema conformance.",
-        tags: ["LangGraph (Llama-3.3)", "Elasticsearch", "Docker/Terraform", "FastAPI", "DeepEval"],
+        metric: { value: "98.8%", label: "IOC F1" },
+        summary:
+            "Autonomous SOC pipeline ingesting raw threat advisories and live Elasticsearch log streams, generating validated YARA-L 2.0, Sigma, and KQL detection rules through a parallel LangGraph multi-agent system deployed on AWS ECS Fargate.",
+        highlights: [
+            "Multi-Agent Pipeline: LangGraph fans out Sigma + KQL generation in parallel, then joins before a 9-check YARA-L structural validator with LLM retry loop — rules auto-correct before an analyst ever sees them.",
+            "Zero-Trust Guardrails: 7-category prompt-injection firewall firing in <1ms; multi-provider LLM pool (Gemini → OpenRouter → Groq → Cerebras) rotates on 429s with no sleep and thread-safe key index.",
+            "Production Infrastructure: 4-service Docker Compose on AWS ECS Fargate via Terraform behind an ALB; GitHub Actions eval gate with IOC F1 ≥ 90% and Guard TPR = 100% regression thresholds.",
+        ],
+        statsRibbon: [
+            { value: "0.0%", label: "False Positive Rate" },
+            { value: "100%", label: "Injection Block Rate" },
+            { value: "~$0.0004", label: "Cost / Run" },
+        ],
+        tags: ["LangGraph", "Elasticsearch", "Docker + Terraform", "FastAPI", "GitHub Actions"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/Agentic-CTI" }],
-        metric: { value: "98.8%", label: "IOC Extraction F1-Score" }
     },
     {
         title: "CPace-Relay: Zero-Trust PIN-Authenticated Key Exchange SDK",
         context: "Open-Source Security SDK",
         period: "Summer 2026",
-        problem:
-            "Wrapping DH public keys in secretbox(PBKDF2(pin)) prevents relay MITM but creates a verifiable decryption oracle — any captured transcript enables offline brute-force of all 1M PINs without touching the relay.",
-        approach:
-            "Replaced the wrapping step with a CPace PAKE handshake (IETF draft): the PIN is mixed directly into a ristretto255 DH generator via hash-to-curve, so verifying a guessed PIN offline requires solving DH — not just checking a MAC.",
-        results:
-            "20/20 tests passing across three suites: happy-path round-trips, an offline oracle resistance proof, and session isolation. Wire-level integration tests assert zero plaintext or key material ever transits the relay.",
-        tags: ["TypeScript", "CPace PAKE (ristretto255)", "WebSocket Relay", "@noble/curves", "IETF Draft"],
+        metric: { value: "0 leaks", label: "wire-asserted" },
+        summary:
+            "CPace PAKE implementation (IETF draft) eliminating the offline brute-force oracle present in secretbox-based PIN schemes — the PIN is mixed into a ristretto255 DH generator via hash-to-curve (RFC 9380), so verifying a guess requires solving discrete log, not checking a MAC.",
+        highlights: [
+            "Protocol: PIN baked into the DH generator via hash-to-curve — captured wire messages are ristretto255 points, not checkable ciphertexts. HMAC-SHA256 key confirmation before any data exchange.",
+            "Architecture: TypeScript monorepo (npm workspaces) — crypto package (CPace + X25519 baseline), relay (WebSocket blind broker, application-level TTL), and test-clients.",
+            "Security Controls: 10-attempt rate limit → permanent session lock; assertNoCleartext() on every relay handler; sessionId bound into HKDF blocking cross-session replay.",
+        ],
+        statsRibbon: [
+            { value: "<1ms", label: "Handshake Overhead" },
+            { value: "10 tries", label: "Rate Limit Lock" },
+            { value: "RFC 9380", label: "Hash-to-Curve Spec" },
+        ],
+        tags: ["TypeScript", "CPace PAKE", "WebSocket Relay", "npm Workspaces"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/cpace-relay" }],
-        metric: { value: "20/20", label: "tests passing" }
     },
     {
         title: "Predicting Superhost Status on Airbnb Listings",
         context: "CSCI 5523 · University of Minnesota",
         period: "Fall 2025",
-        problem:
-            "Superhost status drives revenue, but predicting it is complex due to noisy multi-dimensional data and data leakage caused by multi-listing hosts.",
-        approach:
-            "Built an end-to-end ML pipeline analyzing 10k+ Twin Cities listings and 160k+ reviews, using a host-aware split to prevent leakage. Tuned tree-based ensembles and integrated a Groq-powered LLM agent to generate operational task tickets for at-risk hosts.",
-        results:
-            "Achieved 0.87 ROC-AUC with a Random Forest model. SHAP analysis revealed response rates drive success, while scaling beyond 2-3 properties degrades Superhost probability. Deployed as a live FastAPI simulator.",
-        tags: ["Random Forest", "SHAP", "FastAPI", "Groq API", "scikit-learn"],
+        metric: { value: "0.87", label: "ROC-AUC" },
+        summary:
+            "End-to-end ML pipeline predicting Airbnb Superhost status from 10k+ Twin Cities listings with a host-aware leakage-proof split, a SHAP-driven at-risk agent, and a live FastAPI simulator with Evidently AI drift monitoring gated in CI.",
+        highlights: [
+            "Modeling: 11 models across 6 families (LR, DT, RF, XGBoost, LightGBM, CatBoost) with RandomizedSearchCV + StratifiedKFold; host-aware split on host_id prevents leakage across June + September 2025 scrapes.",
+            "Intelligence: Batch SHAP at-risk agent, what-if simulator sweeping listing count 1→50, Groq LLM generating prioritized tickets from the last 5 guest reviews.",
+            "CI/CD: GitHub Actions — ruff + pytest + Evidently AI drift gate failing on >50% feature drift, posting per-feature p-values as PR comments.",
+        ],
+        statsRibbon: [
+            { value: "11", label: "Models Compared" },
+            { value: "0.80", label: "F1 Score" },
+            { value: "≤50%", label: "CI Drift Gate" },
+        ],
+        tags: ["Random Forest", "SHAP", "FastAPI", "Evidently AI", "GitHub Actions"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/Predicting-Airbnb-Superhost-Status-in-the-Twin-Cities-" }],
-        metric: { value: "0.87", label: "ROC-AUC" }
     },
     {
         title: "CareFlow AI - Home Health Referral Swarm",
         context: "Origin House Hackathon · Finalist",
         period: "April 2026",
-        problem:
-            "Home health agencies sit on a 72-hour referral backlog that delays patient care and costs the industry billions. Most of the work is unstructured intake from faxes and PDFs.",
-        approach:
-            "Built a FastAPI and Next.js multi-agent workflow employing Groq to parse and extract unstructured patient referral PDFs. Integrated a TinyFish browser agent that navigates insurance portals and nurse rosters to automate eligibility checks and patient scheduling.",
-        results:
-            "Finalist in a 24 hour packed hackathon. Demoed end-to-end referral intake on real-world patient data, executing extraction, validation, and browser-driven scheduling decisions in under a minute instead of the typical 72-hour manual backlog.",
-        tags: ["LLM Agents", "FastAPI", "Next.js", "Groq API", "TinyFish AI"],
-        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/careflow-ai" }],
         metric: { value: "<1 min", label: "intake → routed" },
-    },
-    {
-        title: "HighPay - Fleet Tracking and Automated Billing",
-        context: "AMCEC, Bangalore",
-        period: "Oct 2024 – Jan 2025",
-        problem:
-            "A local fleet operator was billing manually from paper logs. Disputes were common and trips slipped through. They needed something live, automatic, and trustworthy.",
-        approach:
-            "Built a real-time tracking and billing system on Traccar GPS with geofencing, MongoDB storage, and in-app payments. Designed the data model so every charge was traceable to a trip.",
-        results:
-            "Cut manual processing time by ~40%, eliminated the most common billing disputes, and gave clients a transparent view of their own usage.",
-        tags: ["Traccar", "MongoDB", "Geofencing", "Payments"],
-        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/HighPay" }],
-        metric: { value: "~40%", label: "less manual work" },
-    },
-    {
-        title: "Predicting Diabetes Risk with Statistical Learning",
-        context: "STAT 5052 · University of Minnesota",
-        period: "Fall 2025",
-        problem:
-            "Early diabetes risk models often look great in notebooks and fall apart in practice, usually because of leakage and weakly grounded predictors.",
-        approach:
-            "Audited the dataset for leakage, rebuilt the train/test split, and compared logistic regression, random forests, and gradient boosting under matched protocols. Selected predictors with clinical plausibility in mind.",
-        results:
-            "Gradient Boosting won on a clean holdout and exposed a small, defensible set of risk factors, the kind a clinician would actually trust as a screening signal.",
-        tags: ["Gradient Boosting", "Statistical Learning", "R"],
-        links: [{ label: "GitHub", href: "#" }],
-        metric: { value: "0 leaks", label: "post-audit" },
-    },
-    {
-        title: "Green ROI - Corporate Travel Sustainability",
-        context: "Analytics for Good Hackathon · 2nd Place",
-        period: "Jan 2026",
-        problem:
-            "Companies want to cut travel emissions without killing revenue. Most sustainability dashboards stop at the carbon number and leave the ROI conversation on the floor.",
-        approach:
-            "In a 24-hour challenge, we used Celonis to analyze raw corporate travel data and build dashboards surfacing 'Green ROI.' We identified actionable policy levers, like prioritizing trains, economy flights, and cleaner vehicles in Europe, strategic footprint optimization, and regionalized hub model with projected savings.",
-        results:
-            "Took 2nd place at the Carlson School Analytics for Good Hackathon. We delivered an executive-style pitch where our \"Green ROI\" framing gave non-technical leadership a clear, data-backed path to make the trade-off.",
-        tags: ["Celonis", "Storytelling", "Sustainability"],
-        links: [{ label: "LinkedIn Post", href: "https://www.linkedin.com/feed/update/urn:li:activity:7424521708004556800/" }],
-        metric: { value: "2nd", label: "university-wide" }
+        summary:
+            "Multi-agent home health referral system converting raw fax PDFs into routed, scheduled patient visits through a 7-stage document pipeline and three Tinyfish web-browsing agents — built in 24 hours at the Origin House Hackathon.",
+        highlights: [
+            "Document Pipeline: 7 agents in sequence — OCR → Document Parsing → LLM Extraction → Demographics Validation → Contact Validation → Clinical Normalization → Cross-Field Validation.",
+            "Operational Agents: Three Tinyfish web-browsing agents navigate insurance portals, ZIP-based placement rosters, and nurse scheduling systems to verify eligibility, match placement, and book the first visit.",
+            "Stack: FastAPI backend + Next.js 14 frontend with a real-time agent trace dashboard showing every agent's live status and observations.",
+        ],
+        statsRibbon: [
+            { value: "7 + 3", label: "Agents in Pipeline" },
+            { value: "< 1 min", label: "Intake to Routed" },
+            { value: "24 hrs", label: "Built In" },
+        ],
+        tags: ["LLM Agents", "FastAPI", "Next.js 14", "TinyFish AI"],
+        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/careflow-ai" }],
     },
     {
         title: "The Sadness Paradox - Music & Emotion Visualization",
         context: "CSCI 5609 · University of Minnesota",
         period: "Fall 2025",
-        problem:
-            "Why has popular music grown emotionally darker yet louder over the last century? Exploring this auditory paradox requires mapping complex audio trends across genres and eras without losing stylistic context.",
-        approach:
-            "Built an interactive scrollytelling visualization using React and D3.js over 100 years of Spotify history. Developed multi-stage line charts, genre heatmaps, interactive chord diagrams, and a music taste quiz. Preprocessed raw Spotify datasets in Python to aggregate acoustic attributes.",
-        results:
-            "Visualized how mainstream music has become 18% sadder (lower valence), 34% louder, and 65% less acoustic since the 1960s, mapping the rise of high-intensity, emotionally dark music. Deployed as a live GitHub Pages interactive narrative.",
-        tags: ["React", "D3.js", "Spotify API", "Scrollytelling", "Python"],
-        links: [{ label: "Live Demo", href: "https://shivank19.github.io/CSCI5609_Final_Project/" }],
         metric: { value: "100 yrs", label: "of Spotify data" },
+        summary:
+            "Interactive scrollytelling visualization mapping 100 years of Spotify history to reveal how popular music has grown measurably sadder, louder, and less acoustic since the 1960s — built with React and D3.js.",
+        highlights: [
+            "Multi-stage D3.js visualizations: line charts, genre heatmaps, interactive chord diagrams, and a music taste quiz.",
+            "Python preprocessing of raw Spotify datasets to aggregate acoustic attributes across year, genre, and era before the frontend renders them.",
+        ],
+        statsRibbon: [
+            { value: "18%", label: "Sadder (valence)" },
+            { value: "34%", label: "Louder (loudness)" },
+            { value: "65%", label: "Less Acoustic" },
+        ],
+        tags: ["React", "D3.js", "Spotify API", "Scrollytelling"],
+        links: [{ label: "Live Demo", href: "https://shivank19.github.io/CSCI5609_Final_Project/" }],
+    },
+    {
+        title: "Predicting Diabetes Risk with Statistical Learning",
+        context: "STAT 5052 · University of Minnesota",
+        period: "Fall 2025",
+        metric: { value: "11 models", label: "benchmarked" },
+        summary:
+            "Leakage-free diabetes risk prediction pipeline benchmarking 11 model families across ~97,000 patient records, using DeLong's pairwise AUC test and bootstrapped confidence intervals to make model comparisons statistically honest — implemented in both Python and R.",
+        highlights: [
+            "Leakage Audit: Explicitly removed all ADA diagnostic criteria (HbA1c, fasting glucose, pre-computed risk scores) before any modeling.",
+            "Statistical Rigor: DeLong's pairwise AUC test, bootstrapped 95% confidence intervals, and calibration curves — not just point estimates.",
+            "Dual Implementation: Full pipeline in Python (scikit-learn) and R (tidymodels) covering the complete course syllabus.",
+        ],
+        statsRibbon: [
+            { value: "0.665", label: "Best Leakage-Free AUC" },
+            { value: "~97k", label: "Patient Records" },
+            { value: "0", label: "Diagnostic Leaks" },
+        ],
+        tags: ["scikit-learn", "tidymodels (R)", "XGBoost", "DeLong's AUC Test"],
+        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/Predicting-Diabetes-Risk" }],
+    },
+    {
+        title: "Green ROI - Corporate Travel Sustainability",
+        context: "Analytics for Good Hackathon · 2nd Place",
+        period: "Jan 2026",
+        metric: { value: "2nd", label: "university-wide" },
+        summary:
+            "24-hour hackathon analysis of corporate travel data using Celonis, reframing sustainability metrics as 'Green ROI' to give leadership a data-backed trade-off framework rather than just a carbon number.",
+        highlights: [
+            "Used Celonis to surface actionable policy levers — prioritizing trains, economy flights, and cleaner vehicles in Europe — and modeled a regionalized hub structure with projected savings.",
+            "Delivered an executive-style pitch where 'Green ROI' framing gave non-technical leadership a clear, defensible path to make the trade-off.",
+        ],
+        tags: ["Celonis", "Storytelling", "Sustainability"],
+        links: [{ label: "LinkedIn Post", href: "https://www.linkedin.com/feed/update/urn:li:activity:7424521708004556800/" }],
+    },
+    {
+        title: "HighPay - Fleet Tracking and Automated Billing",
+        context: "AMCEC, Bangalore",
+        period: "Oct 2024 – Jan 2025",
+        metric: { value: "~40%", label: "less manual work" },
+        summary:
+            "Real-time fleet tracking and automated billing platform built on Traccar GPS with geofencing, MongoDB, and in-app payments — making every charge traceable to a specific trip and eliminating the ambiguity that caused disputes.",
+        highlights: [
+            "Real-time GPS tracking with geofencing triggers for automatic trip detection and billing events.",
+            "Every charge is traceable to a trip in the data model — transparent usage history accessible to clients in-app.",
+        ],
+        tags: ["Traccar", "MongoDB", "Geofencing", "Payments"],
+        links: [{ label: "GitHub", href: "https://github.com/Laeeq14/HighPay" }],
     },
 ];
 
@@ -141,8 +178,8 @@ export function Projects() {
                         </h2>
                     </div>
                     <p className="hidden max-w-xs text-sm text-ink-soft md:block">
-                        Each one tries to answer a real question. A few of them actually
-                        made it to production.
+                        End-to-end systems built to production standards — not
+                        just to demonstrate concepts.
                     </p>
                 </Reveal>
 
@@ -153,9 +190,9 @@ export function Projects() {
                             delay={(idx % 3) * 100}
                             variant="fade"
                         >
-                            <article
-                                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-[0_1px_0_rgba(0,0,0,0.02),0_20px_40px_-30px_color-mix(in_oklab,var(--clay)_30%,transparent)] transition-all duration-300 hover:-translate-y-1 hover:border-clay/50 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--clay)_55%,transparent)]"
-                            >
+                            <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-[0_1px_0_rgba(0,0,0,0.02),0_20px_40px_-30px_color-mix(in_oklab,var(--clay)_30%,transparent)] transition-all duration-300 hover:-translate-y-1 hover:border-clay/50 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--clay)_55%,transparent)]">
+
+                                {/* ── Card Header ─────────────────────────────── */}
                                 <div className="flex items-start justify-between gap-4">
                                     <div>
                                         <p className="text-xs text-ink-soft">{p.context}</p>
@@ -177,54 +214,81 @@ export function Projects() {
 
                                 <p className="mt-2 text-xs text-ink-soft/70">{p.period}</p>
 
-                                <dl className="mt-6 space-y-4 text-sm">
-                                    <div>
-                                        <dt className="text-[11px] uppercase tracking-widest text-clay/80">
-                                            Problem
-                                        </dt>
-                                        <dd className="mt-1 leading-relaxed text-ink-soft">{p.problem}</dd>
-                                    </div>
-                                    <div>
-                                        <dt className="text-[11px] uppercase tracking-widest text-clay/80">
-                                            Approach
-                                        </dt>
-                                        <dd className="mt-1 leading-relaxed text-ink-soft">{p.approach}</dd>
-                                    </div>
-                                    <div>
-                                        <dt className="text-[11px] uppercase tracking-widest text-clay/80">
-                                            Result
-                                        </dt>
-                                        <dd className="mt-1 leading-relaxed text-ink-soft">{p.results}</dd>
-                                    </div>
-                                </dl>
+                                {/* ── Summary ──────────────────────────────────── */}
+                                <p className="mt-5 text-sm leading-relaxed text-ink-soft">
+                                    {p.summary}
+                                </p>
 
-                                <div className="mt-6 flex flex-wrap gap-2">
-                                    {p.tags.map((t) => (
-                                        <span
-                                            key={t}
-                                            className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                                {/* ── Key Highlights ───────────────────────────── */}
+                                <ul className="mt-4 flex-1 space-y-2.5">
+                                    {p.highlights.map((item, i) => (
+                                        <li
+                                            key={i}
+                                            className="flex gap-2.5 text-sm leading-relaxed text-ink-soft"
                                         >
-                                            {t}
-                                        </span>
+                                            <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-clay/50" />
+                                            <span>{item}</span>
+                                        </li>
                                     ))}
+                                </ul>
+
+                                {/* ── Bottom block pinned to card base ─────────── */}
+                                <div className="mt-auto">
+                                    {/* Metric Ribbon */}
+                                    {p.statsRibbon && p.statsRibbon.length > 0 && (
+                                        <div
+                                            className="mt-6 grid divide-x divide-border overflow-hidden rounded-xl border border-border bg-secondary/60"
+                                            style={{
+                                                gridTemplateColumns: `repeat(${p.statsRibbon.length}, 1fr)`,
+                                            }}
+                                        >
+                                            {p.statsRibbon.map((stat, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="flex flex-col items-center gap-0.5 px-3 py-3 text-center"
+                                                >
+                                                    <span className="text-xl font-bold leading-none text-clay">
+                                                        {stat.value}
+                                                    </span>
+                                                    <span className="mt-1 text-[10px] tracking-wide text-ink-soft/70">
+                                                        {stat.label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* Tags */}
+                                    <div className="mt-5 flex flex-wrap gap-2">
+                                        {p.tags.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                                            >
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Links */}
+                                    <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 text-sm">
+                                        {p.links.map((l) => (
+                                            <a
+                                                key={l.label}
+                                                href={l.href}
+                                                className="text-clay underline-offset-4 transition-colors hover:underline"
+                                            >
+                                                {l.label} →
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
 
-                                <div className="mt-6 flex flex-wrap gap-4 border-t border-border pt-5 text-sm">
-                                    {p.links.map((l) => (
-                                        <a
-                                            key={l.label}
-                                            href={l.href}
-                                            className="text-clay underline-offset-4 transition-colors hover:underline"
-                                        >
-                                            {l.label} →
-                                        </a>
-                                    ))}
-                                </div>
                             </article>
                         </Reveal>
                     ))}
                 </div>
             </div>
-        </section >
+        </section>
     );
 }

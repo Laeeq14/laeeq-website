@@ -3,12 +3,12 @@ import { Reveal } from "./Reveal";
 const experience = [
     {
         role: "Threat Intel R&D Intern",
-        org: "Information Sharing and Analysis Center (ISAC)",
+        org: "Information Sharing and Analysis Center Inc. (ISAC)",
         where: "Remote",
         period: "Mar – Jul 2025",
         notes: [
-            "Analyzed behavioral patterns of advanced threat groups to build structured intelligence dossiers, mapping complex attack cycles to visualization tools like MITRE ATT&CK heatmaps.",
-            "Engineered detection queries (KQL, Sigma, YARA) to parse telemetry and convert raw indicators into structured, queryable data feeds (STIX) to guide security planning.",
+            "Profiled APT and eCrime groups (SideWinder, Patchwork, Confucius) through behavioral analysis, IOC enrichment (hashes, domains, IPs), and MITRE ATT&CK mapping; produced structured threat actor dossiers used by security teams for detection and response planning.",
+            "Delivered a collaborative APT41 profiling project: STIX-structured intelligence, ATT&CK Navigator heatmap, and detection rules (YARA, Sigma, KQL) that converted raw IOCs into queryable telemetry feeds.",
         ],
     },
     {
@@ -17,8 +17,8 @@ const experience = [
         where: "Bangalore",
         period: "Feb – May 2025",
         notes: [
-            "Analyzed placement funnels, skill gaps, and salary trends using Python, MySQL, and R, optimizing ER diagrams and generating synthetic datasets to improve revenue visibility.",
-            "Designed and deployed interactive dashboards using Streamlit and Power BI to track key performance indicators, enabling cross-functional teams to monitor program performance and make data-driven decisions.",
+            "Analyzed job-seeker placement funnels, skill gaps, salary trends, and recruiter performance using Python, MySQL, and R; generated and validated synthetic datasets, optimized ER diagrams, and surfaced insights that improved placement pipelines and revenue visibility.",
+            "Designed and deployed interactive dashboards with Power BI and Streamlit to track key performance indicators, enabling cross-functional teams to monitor program performance and make data-driven decisions.",
         ],
     },
 ];

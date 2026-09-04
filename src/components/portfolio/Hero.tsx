@@ -1,4 +1,4 @@
-import pic5 from "@/assets/pic5.jpeg";
+﻿import pic5 from "@/assets/pic5.jpeg";
 import { Reveal } from "./Reveal";
 
 
@@ -17,23 +17,23 @@ export function Hero() {
                 <Reveal className="flex flex-col justify-center">
                     <p className="mb-6 flex items-center gap-3 text-sm text-ink-soft">
                         <span className="h-px w-8 bg-clay" />
-                        Minneapolis, MN · Open to Full-Time 2027 Roles (Graduating May 2027)
+                        Minneapolis, MN - Open to Full-Time 2027 Roles (Graduating May 2027)
                     </p>
                     <h1 className="font-serif text-5xl leading-[1.05] text-ink md:text-6xl lg:text-7xl">
-                        Hi, I&apos;m Laeeq. I <span className="text-clay">build</span> production data systems, ML pipelines, and secure backend infrastructure.
+                        Hi, I&apos;m Laeeq. I <span className="text-clay">build</span> agentic AI systems, production data pipelines, and secure backend infrastructure.
                     </h1>
                     <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
                         M.S. Data Science at the University of Minnesota, B.E. Computer
-                        Science. My work spans data engineering, applied ML, and security
-                        infrastructure: end-to-end pipelines, model evaluation, and
-                        PAKE-based cryptographic protocols built to hold up in production.
+                        Science at AMCEC. My work spans multi-agent AI workflows, data
+                        engineering, and security infrastructure: LangGraph pipelines,
+                        evaluated ML systems, and cryptographic protocols built to hold up in production.
                     </p>
                     <div className="mt-10 flex flex-wrap items-center gap-4 text-sm">
                         <a
                             href="#work"
                             className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-background transition-all hover:bg-clay hover:shadow-[0_10px_30px_-10px_color-mix(in_oklab,var(--clay)_60%,transparent)]"                        >
                             See selected work
-                            <span className="transition-transform group-hover:translate-x-1">→</span>
+                            <span className="transition-transform group-hover:translate-x-1">-&gt;</span>
                         </a>
                         <a
                             href="#contact"

@@ -71,46 +71,54 @@
 
 :root {
     --radius: 0.75rem;
-    /* clean white with a hint of cool */
-    --background: oklch(0.995 0.003 250);
-    --paper: oklch(0.975 0.006 250);
-    --foreground: oklch(0.18 0.02 255);
-    --ink: oklch(0.16 0.02 255);
-    --ink-soft: oklch(0.42 0.018 250);
+    /* ── Precision Slate & Cobalt palette ────────────────────────────────── */
+    /* Page background: #F8FAFC (Slate 50) */
+    --background: oklch(0.984 0.004 247);
+    /* Alternate section background: slightly more tinted */
+    --paper: oklch(0.970 0.006 247);
+    /* Primary text: #0F172A (Slate 900) */
+    --foreground: oklch(0.149 0.030 260);
+    --ink: oklch(0.149 0.030 260);
+    /* Body / secondary text: #475569 (Slate 600) */
+    --ink-soft: oklch(0.442 0.022 252);
+    /* Card surface: #FFFFFF */
     --card: oklch(1 0 0);
-    --card-foreground: oklch(0.18 0.02 255);
+    --card-foreground: oklch(0.149 0.030 260);
     --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.18 0.02 255);
-    /* clear professional blue accent (kept as --clay for compat) */
-    --primary: oklch(0.52 0.16 250);
-    --primary-foreground: oklch(0.995 0.003 250);
-    --clay: oklch(0.52 0.16 250);
-    /* slate secondary (kept as --sage for compat) */
-    --secondary: oklch(0.95 0.012 245);
-    --secondary-foreground: oklch(0.28 0.03 250);
-    --sage: oklch(0.55 0.04 245);
-    --muted: oklch(0.955 0.008 250);
-    --muted-foreground: oklch(0.5 0.015 250);
-    --accent: oklch(0.94 0.03 245);
-    --accent-foreground: oklch(0.25 0.05 250);
+    --popover-foreground: oklch(0.149 0.030 260);
+    /* Accent / highlighted: #2563EB (Cobalt Blue 600) */
+    --primary: oklch(0.488 0.200 264);
+    --primary-foreground: oklch(0.984 0.004 247);
+    --clay: oklch(0.488 0.200 264);
+    /* Pills & tags bg: #F1F5F9 (Slate 100) */
+    --secondary: oklch(0.962 0.007 247);
+    /* Pills & tags text: #334155 (Slate 700) */
+    --secondary-foreground: oklch(0.336 0.026 254);
+    /* Sage (used for cert dots etc.): muted cobalt */
+    --sage: oklch(0.488 0.200 264);
+    --muted: oklch(0.962 0.007 247);
+    --muted-foreground: oklch(0.442 0.022 252);
+    --accent: oklch(0.940 0.018 248);
+    --accent-foreground: oklch(0.200 0.030 260);
     --destructive: oklch(0.55 0.2 27);
-    --destructive-foreground: oklch(0.99 0.003 250);
-    --border: oklch(0.91 0.01 250);
-    --input: oklch(0.92 0.01 250);
-    --ring: oklch(0.52 0.16 250);
+    --destructive-foreground: oklch(0.984 0.004 247);
+    /* Card border: #E2E8F0 (Slate 200) */
+    --border: oklch(0.921 0.010 248);
+    --input: oklch(0.921 0.010 248);
+    --ring: oklch(0.488 0.200 264);
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
     --chart-3: oklch(0.398 0.07 227.392);
     --chart-4: oklch(0.828 0.189 84.429);
     --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.984 0.003 247.858);
-    --sidebar-foreground: oklch(0.129 0.042 264.695);
-    --sidebar-primary: oklch(0.208 0.042 265.755);
-    --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.968 0.007 247.896);
-    --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-    --sidebar-border: oklch(0.929 0.013 255.508);
-    --sidebar-ring: oklch(0.704 0.04 256.788);
+    --sidebar: oklch(0.984 0.004 247);
+    --sidebar-foreground: oklch(0.149 0.030 260);
+    --sidebar-primary: oklch(0.488 0.200 264);
+    --sidebar-primary-foreground: oklch(0.984 0.004 247);
+    --sidebar-accent: oklch(0.962 0.007 247);
+    --sidebar-accent-foreground: oklch(0.336 0.026 254);
+    --sidebar-border: oklch(0.921 0.010 248);
+    --sidebar-ring: oklch(0.488 0.200 264);
 }
 
 .dark {
