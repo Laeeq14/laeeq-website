@@ -48,9 +48,9 @@ const projects: Project[] = [
             "Security Controls: 10-attempt rate limit → permanent session lock; assertNoCleartext() on every relay handler; sessionId bound into HKDF blocking cross-session replay.",
         ],
         statsRibbon: [
-            { value: "<1ms", label: "Handshake Overhead" },
+            { value: "264ms", label: "PIN KDF / Session (by design)" },
+            { value: "16ms", label: "Handshake Round-Trip" },
             { value: "10 tries", label: "Rate Limit Lock" },
-            { value: "RFC 9380", label: "Hash-to-Curve Spec" },
         ],
         tags: ["TypeScript", "CPace PAKE", "WebSocket Relay", "npm Workspaces"],
         links: [{ label: "GitHub", href: "https://github.com/Laeeq14/cpace-relay" }],
