@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
+        "vercel-build": "vite build && node -e \"const{cpSync,mkdirSync}=require('fs');mkdirSync('.vercel/output',{recursive:true});cpSync('dist/client','.vercel/output/static',{recursive:true});cpSync('dist/server','.vercel/output/functions/__server.func',{recursive:true});cpSync('dist/config.json','.vercel/output/config.json');\"",
         "build:dev": "vite build --mode development",
         "preview": "vite preview",
         "lint": "eslint .",
